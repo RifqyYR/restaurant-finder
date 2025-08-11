@@ -7,6 +7,7 @@ import 'package:submission_restaurant_app_1/pages/restaurant_detail_screen.dart'
 import 'package:submission_restaurant_app_1/pages/restaurant_list_screen.dart';
 import 'package:submission_restaurant_app_1/pages/splash_screen.dart';
 import 'package:submission_restaurant_app_1/providers/restaurant_detail_provider.dart';
+import 'package:submission_restaurant_app_1/providers/restaurant_search_provider.dart';
 import 'package:submission_restaurant_app_1/providers/theme_provider.dart';
 import 'package:submission_restaurant_app_1/providers/restaurant_list_provider.dart';
 import 'package:submission_restaurant_app_1/utils/theme_scheme.dart';
@@ -18,6 +19,9 @@ void main(List<String> args) {
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ChangeNotifierProvider(
           create: (_) => RestaurantListProvider(ApiServices()),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => RestaurantSearchProvider(ApiServices()),
         ),
         ChangeNotifierProvider(
           create: (_) => RestaurantDetailProvider(ApiServices()),

@@ -7,6 +7,7 @@ class Restaurant {
   String? name;
   String? description;
   String? city;
+  String? address;
   String? pictureId;
   List<Category>? categories;
   Menus? menus;
@@ -18,6 +19,7 @@ class Restaurant {
     this.name,
     this.description,
     this.city,
+    this.address,
     this.pictureId,
     this.categories,
     this.menus,
@@ -30,6 +32,7 @@ class Restaurant {
     name: json["name"],
     description: json["description"],
     city: json["city"],
+    address: json["address"],
     pictureId: json["pictureId"],
     categories:
         json["categories"] == null
@@ -52,6 +55,7 @@ class Restaurant {
     "name": name,
     "description": description,
     "city": city,
+    "address": address,
     "pictureId": pictureId,
     "categories":
         categories == null

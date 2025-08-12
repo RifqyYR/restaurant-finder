@@ -1,4 +1,3 @@
-
 import 'package:submission_restaurant_app_1/data/models/restaurant.dart';
 
 class RestaurantListResponse {

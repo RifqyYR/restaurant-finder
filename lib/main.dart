@@ -6,11 +6,13 @@ import 'package:submission_restaurant_app_1/data/api/api_services.dart';
 import 'package:submission_restaurant_app_1/pages/restaurant_detail_screen.dart';
 import 'package:submission_restaurant_app_1/pages/restaurant_list_screen.dart';
 import 'package:submission_restaurant_app_1/pages/splash_screen.dart';
+import 'package:submission_restaurant_app_1/providers/add_review_provider.dart';
 import 'package:submission_restaurant_app_1/providers/restaurant_detail_provider.dart';
 import 'package:submission_restaurant_app_1/providers/restaurant_search_provider.dart';
 import 'package:submission_restaurant_app_1/providers/theme_provider.dart';
 import 'package:submission_restaurant_app_1/providers/restaurant_list_provider.dart';
 import 'package:submission_restaurant_app_1/utils/theme_scheme.dart';
+import 'package:submission_restaurant_app_1/pages/add_review_screen.dart';
 
 void main(List<String> args) {
   runApp(
@@ -26,6 +28,7 @@ void main(List<String> args) {
         ChangeNotifierProvider(
           create: (_) => RestaurantDetailProvider(ApiServices()),
         ),
+        ChangeNotifierProvider(create: (_) => AddReviewProvider(ApiServices())),
       ],
       child: MyApp(),
     ),
@@ -56,8 +59,13 @@ class MyApp extends StatelessWidget {
                   return RestaurantDetailScreen(restaurantId: args);
                 },
               );
+            } else if (settings.name == '/review') {
+              final args = settings.arguments as String;
+              return MaterialPageRoute(
+                builder: (context) => AddReviewScreen(restaurantId: args),
+              );
             }
-            return null; // Let the OS handle the request if the route doesn't match
+            return null;
           },
           theme: ThemeData(
             colorScheme: lightColorScheme,

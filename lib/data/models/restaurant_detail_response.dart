@@ -11,7 +11,6 @@ class RestaurantDetailResponse {
     required this.restaurant,
   });
 
-  // todo-04-detail-02: dont forget to add map converter
   factory RestaurantDetailResponse.fromJson(Map<String, dynamic> json) {
     return RestaurantDetailResponse(
       error: json["error"],

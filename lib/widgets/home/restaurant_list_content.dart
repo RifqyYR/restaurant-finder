@@ -118,7 +118,14 @@ class RestaurantListContent extends StatelessWidget {
             }, childCount: restaurantList.length),
           ),
           RestaurantSearchErrorState(error: var message) => SliverToBoxAdapter(
-            child: Center(child: Text(message)),
+            child: Center(
+              child: Text(
+                message,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurface,
+                ),
+              ),
+            ),
           ),
           _ => SliverToBoxAdapter(child: const SizedBox()),
         };

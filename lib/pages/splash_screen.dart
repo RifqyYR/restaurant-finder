@@ -27,9 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Text(
               "Restaurant Finder",
-              style: Theme.of(
-                context,
-              ).textTheme.headlineLarge,
+              style: Theme.of(context).textTheme.headlineLarge,
               textAlign: TextAlign.center,
             ),
           ],

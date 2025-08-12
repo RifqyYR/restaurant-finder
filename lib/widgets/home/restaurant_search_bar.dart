@@ -4,32 +4,17 @@ class RestaurantSearchBar extends StatefulWidget {
   final TextEditingController searchController;
   final void Function(String) onSubmitted;
 
-  const RestaurantSearchBar({super.key, required this.searchController, required this.onSubmitted});
+  const RestaurantSearchBar({
+    super.key,
+    required this.searchController,
+    required this.onSubmitted,
+  });
 
   @override
   State<RestaurantSearchBar> createState() => _RestaurantSearchBarState();
 }
 
 class _RestaurantSearchBarState extends State<RestaurantSearchBar> {
-  final FocusNode _focusNode = FocusNode();
-  bool _isFocused = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _focusNode.addListener(() {
-      setState(() {
-        _isFocused = _focusNode.hasFocus;
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _focusNode.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
@@ -41,17 +26,12 @@ class _RestaurantSearchBarState extends State<RestaurantSearchBar> {
         ),
         height: 55,
         child: TextField(
-          focusNode: _focusNode,
           controller: widget.searchController,
           onSubmitted: widget.onSubmitted,
           decoration: InputDecoration(
             hintText: 'Cari resto',
             prefixIcon: const Icon(Icons.search),
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-            prefixIconColor:
-                _isFocused
-                    ? Theme.of(context).colorScheme.primary
-                    : Theme.of(context).colorScheme.onSurface,
           ),
         ),
       ),

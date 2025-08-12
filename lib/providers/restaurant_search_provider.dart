@@ -11,12 +11,12 @@ class RestaurantSearchProvider extends ChangeNotifier {
 
   RestaurantSearchState get resultState => _resultState;
 
-  Future<void> fetchSearchedRestaurantList(String query) async {
+  Future<void> fetchSearchedRestaurantList(String? query) async {
     try {
       _resultState = RestaurantSearchLoadingState();
       notifyListeners();
 
-      final result = await _apiServices.getSearchedRestaurantList(query);
+      final result = await _apiServices.getSearchedRestaurantList(query ?? '');
 
       if (result.error) {
         _resultState = RestaurantSearchErrorState(result.error.toString());
@@ -25,8 +25,10 @@ class RestaurantSearchProvider extends ChangeNotifier {
         _resultState = RestaurantSearchLoadedState(result.restaurants);
         notifyListeners();
       }
-    } on Exception catch (e) {
-      _resultState = RestaurantSearchErrorState(e.toString());
+    } on Exception {
+      _resultState = RestaurantSearchErrorState(
+        "Terjadi kesalahan, silahkan coba lagi",
+      );
       notifyListeners();
     }
   }

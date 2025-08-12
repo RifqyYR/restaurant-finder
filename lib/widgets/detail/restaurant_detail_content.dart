@@ -1,4 +1,3 @@
-// You can put this in a file named `restaurant_detail_content.dart`
 import 'package:flutter/material.dart';
 import 'package:submission_restaurant_app_1/data/models/restaurant.dart';
 
@@ -121,7 +120,7 @@ class RestaurantDetailContent extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children:
-                    restaurantDetail.menus?.foods?.map((food) {
+                    restaurantDetail.menus?.foods.map((food) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 4.0),
                         child: Chip(
@@ -155,7 +154,7 @@ class RestaurantDetailContent extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children:
-                    restaurantDetail.menus?.drinks?.map((drink) {
+                    restaurantDetail.menus?.drinks.map((drink) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 4.0),
                         child: Chip(
@@ -188,7 +187,7 @@ class RestaurantDetailContent extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             SizedBox(
-              height: 150, // Set a fixed height for the carousel
+              height: 150,
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -197,8 +196,7 @@ class RestaurantDetailContent extends StatelessWidget {
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: SizedBox(
-                            width:
-                                250, // Set a fixed width for each review card
+                            width: 250,
                             child: Card(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
@@ -262,6 +260,30 @@ class RestaurantDetailContent extends StatelessWidget {
                         );
                       }).toList() ??
                       [],
+                ),
+              ),
+            ),
+
+            // Add Review Button
+            const SizedBox(height: 40),
+            SizedBox(
+              width: double.maxFinite,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/review',
+                    arguments: restaurantDetail.id,
+                  );
+                },
+                child: Text(
+                  "Berikan Ulasan",
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
                 ),
               ),
             ),

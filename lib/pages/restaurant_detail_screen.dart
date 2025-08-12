@@ -1,4 +1,3 @@
-// In your restaurant_detail_screen.dart file
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:submission_restaurant_app_1/providers/restaurant_detail_provider.dart';
@@ -48,7 +47,12 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                 ],
               ),
             RestaurantDetailErrorState(error: var message) => Center(
-              child: Text(message),
+              child: Text(
+                message,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurface,
+                ),
+              ),
             ),
             _ => const SizedBox(),
           };
